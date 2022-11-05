@@ -5,14 +5,14 @@
 }
 
 .navigation {
-    width: 25%; height: 100vh;
+    width: 20%; height: 100vh;
     background-color: var(--primary-color);
 }
 
 .mainAppBlock {
     display: flex;
     flex-direction: column;
-    width: 75%; height: 100vh;
+    width: 80%; height: 100vh;
 }
 
 .header {

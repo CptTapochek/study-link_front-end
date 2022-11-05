@@ -1,0 +1,108 @@
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-family: var(--main-font);
+    font-size: 48px;
+    color: white;
+    font-weight: 600;
+}
+.logo b{
+    color: var(--red-color);
+}
+
+.navigationButtons {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 18%;
+    margin-bottom: 20%;
+}
+.navigationButtons a {
+    cursor: pointer;
+    align-items: center;
+    height: 60px;
+}
+.navigationButtons a:hover, .logout:hover {
+    background-color: var(--secondary-color);
+}
+.navigationButtons a .section {
+    width: 160px;
+    align-items: center;
+}
+.navigationTitle {
+    font-family: var(--main-font);
+    font-size: 18px;
+    color: white;
+    margin-left: 10px;
+    user-select: none;
+}
+
+.dashboardBTN i, .filesBTN i, .coursesBTN i,
+.gradesBTN i, .notificationsBTN i, .settingsBTN i,
+.profileBTN i, .logout i {
+    content: "";
+    width: 28px; height: 28px;
+    background-repeat: no-repeat;
+    user-select: none;
+}
+.dashboardBTN i {
+    background-image: url("../../assets/icons/dashboard.svg");
+    background-size: 27px;
+}
+.filesBTN i {
+    background-size: 24px;
+    background-image: url("../../assets/icons/files.svg");
+}
+.coursesBTN i {
+    background-size: 27px;
+    background-image: url("../../assets/icons/courses.svg");
+}
+.gradesBTN i {
+    background-size: 28px;
+    background-image: url("../../assets/icons/grades.svg");
+}
+.notificationsBTN i {
+    background-size: 25px;
+    background-image: url("../../assets/icons/notifications.svg");
+}
+.settingsBTN i {
+    background-size: 26px;
+    background-image: url("../../assets/icons/settings.svg");
+}
+.profileBTN i {
+    background-size: 27px;
+    background-image: url("../../assets/icons/profile.svg");
+}
+.logout  i {
+    background-size: 27px;
+    background-image: url("../../assets/icons/logout.svg");
+}
+
+.logout {
+    cursor: pointer;
+    height: 60px; width: 100%;
+    align-items: center;
+}
+
+.logoutTitle {
+    font-family: var(--main-font);
+    font-size: 20px;
+    color: white;
+    margin-left: 10px;
+    font-weight: 500;
+    user-select: none;
+    margin-right: 5%;
+}
+
+.dashboardBTN .navigationTitle {margin-right: 25px;}
+.filesBTN .navigationTitle {margin-right: 79px;}
+.coursesBTN .navigationTitle {margin-right: 47px;}
+.gradesBTN .navigationTitle {margin-right: 60px;}
+.notificationsBTN .navigationTitle {margin-right: 12px;}
+.settingsBTN .navigationTitle {margin-right: 49px;}
+.profileBTN .navigationTitle {margin-right: 65px;}

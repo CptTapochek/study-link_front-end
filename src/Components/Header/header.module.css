@@ -25,6 +25,7 @@
     background-size: 24px;
     background-repeat: no-repeat;
     margin-left: 30%;
+    user-select: none;
 }
 
 .calendarTitle {
@@ -33,4 +34,5 @@
     font-size: 18px;
     font-weight: 500;
     margin-left: 5px;
+    user-select: none;
 }

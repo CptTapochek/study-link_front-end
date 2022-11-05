@@ -5,7 +5,7 @@ const Courses = () => {
 
     return (
         <div className={style.main}>
-
+            Courses
         </div>
     );
 };

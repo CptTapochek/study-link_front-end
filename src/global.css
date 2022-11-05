@@ -4,7 +4,9 @@
 :root {
   --main-font: 'Inter', sans-serif;
   --primary-color: #1424b1;
+  --secondary-color: #2336df;
   --black-color: #2e2e2e;
+  --red-color: #d33c3c;
   --background-color: #f2f2ff;
 }
 
@@ -20,6 +22,7 @@ body, html{
   display: flex;
   justify-content: center;
   align-content: center;
+  transition: .3s ease;
   font-family: var(--main-font);
 }
 
