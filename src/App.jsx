@@ -1,17 +1,26 @@
-import React from "react";
+import React, {useState} from 'react';
 // import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import style from "./app.module.css";
+import Content from './Components/Content/Content';
+import Header from './Components/Header/Header';
 
 
 function App() {
-    //const navigate = useNavigate();
+    const [calendar, setCalendar] = useState("");
 
     return (
         <div id="app">
+            {calendar}
             <div className={style.main}>
-                <div className={style.header}></div>
-                <div className={style.navigation}></div>
-                <div className={style.content}></div>
+                <nav className={style.navigation}></nav>
+                <main className={style.mainAppBlock}>
+                    <header className={style.header}>
+                        <Header calendar={calendar} setCalendar={setCalendar}/>
+                    </header>
+                    <div className={style.content}>
+                        <Content/>
+                    </div>
+                </main>
             </div>
             {/*<Routes>*/}
             {/*  /!*<Route path="/*" element={<courses/>} />*!/*/}

@@ -1,0 +1,19 @@
+
+.main {
+}
+
+.darkBG {
+    position: absolute;
+    background-color: black;
+    z-index: 10;
+    opacity: 0.6;
+    width: 100vw; height: 100vh;
+}
+
+.box {
+    position: absolute;
+    z-index: 11;
+    width: 70%; height: 70%;
+    background-color: white;
+    border-radius: 15px;
+}

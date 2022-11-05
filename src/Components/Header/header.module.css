@@ -1,0 +1,36 @@
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; height: 100%;
+}
+
+.navigation {
+    width: 70%;
+    background-color: #1424b1;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    width: 30%; height: 100%;
+    cursor: pointer;
+}
+
+.calendarIcon {
+    content: "";
+    background-image: url("../../assets/icons/calendar.svg");
+    width: 28px; height: 26px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+    margin-left: 30%;
+}
+
+.calendarTitle {
+    font-family: var(--main-font);
+    color: var(--black-color);
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 5px;
+}
