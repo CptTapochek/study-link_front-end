@@ -6,7 +6,7 @@ const SideBar = () => {
 
     return (
         <div className={style.main}>
-            <div className={style.logo}><b>S</b>tudyLink</div>
+            <NavLink to={"/"} className={style.logo}><b>S</b>tudyLink</NavLink>
             <div className={style.navigationButtons}>
                 {/* dashboard */}
                 <NavLink to={"/dashboard"} className={style.dashboardBTN}>

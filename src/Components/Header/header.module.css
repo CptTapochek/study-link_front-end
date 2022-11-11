@@ -14,6 +14,7 @@
 .date {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     width: 30%; height: 100%;
     cursor: pointer;
 }
@@ -21,18 +22,18 @@
 .calendarIcon {
     content: "";
     background-image: url("../../assets/icons/calendar.svg");
-    width: 28px; height: 26px;
-    background-size: 24px;
+    width: calc(100vw/1920 * 30);
+    height: calc(100vw/1920 * 30);
+    background-size: calc(100vw/1920 * 26);
     background-repeat: no-repeat;
-    margin-left: 30%;
     user-select: none;
 }
 
 .calendarTitle {
-    font-family: var(--main-font);
     color: var(--black-color);
-    font-size: 18px;
+    font-size: calc(100vw/1920 * 22);
     font-weight: 500;
     margin-left: 5px;
+    margin-right: 10%;
     user-select: none;
 }
