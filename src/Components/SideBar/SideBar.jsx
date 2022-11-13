@@ -34,7 +34,7 @@ const SideBar = () => {
                 </NavLink>
             </div>
             <div className={style.navigationButtons}>
-                {/* Notifications.jsx */}
+                {/* Notifications */}
                 <NavLink to={"notifications"} className={style.notificationsBTN}>
                     <div className={style.section}>
                         <i/><div className={style.navigationTitle}>Notifications</div>

@@ -17,6 +17,7 @@ const Profile = () => {
     const [country, setCountry] = useState("");
     const [password, setPassword] = useState("");
     const [validMessage, setValidMessage] = useState({});
+    const [passwordVisibleState, setPasswordVisibleState] = useState(false);
 
     let ChangeImage = (e) => {
         setSelectedImage(e.target.files[0]);
@@ -27,6 +28,7 @@ const Profile = () => {
         };
         reader.readAsDataURL(file);
     };
+
     useEffect(() => {
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));
@@ -50,18 +52,24 @@ const Profile = () => {
                 setEmail(value.trim());
                 break;
             case "address": setAddress(value.trim()); break;
-            case "phone": setPhone(value.trim()); break;
+            case "phone":
+                setPhone(value.replace(/[A-Za-z]|`|=|_|&|%|#|@|>|<|,/gm, "").trim());
+                break;
             case "city": setCity(value.trim()); break;
             case "state": setState(value.trim()); break;
             case "zipCode": setZipCode(value.trim()); break;
             case "country": setCountry(value.trim()); break;
-            case "password": setPassword(value.trim()); break;
+            case "password":
+                delete message.password;
+                setPassword(value.trim());
+                break;
             default:
                 break;
         }
         setValidMessage(message);
     };
 
+    const passwordVisible = () => setPasswordVisibleState(!passwordVisibleState);
 
     const sendDates = async (e) => {
         e.preventDefault();
@@ -69,16 +77,16 @@ const Profile = () => {
 
         /* Validation */
         if (firstName.length < 3 || firstName.length > 18) {
-            message.firstName = "The length of the first name must be greater than 3 and less than 18";
+            message.firstName = "The length of the name must be greater than 3 and less than 18";
         }
         if (lastName.length < 3 || lastName.length > 18) {
-            message.lastName = "The length of the last name must be greater than 3 and less than 18";
+            message.lastName = "The length of the name must be greater than 3 and less than 18";
         }
         if(email.length === 0) {
             message.email = "Please fill out this field";
         }
         if (password.length < 8) {
-            message.lastName = "The length of the first name must be greater than 8";
+            message.password = "The length of the first name must be greater than 8";
         }
         setValidMessage(message);
 
@@ -164,18 +172,41 @@ const Profile = () => {
                 <div className={style.section}>
                     <div className={style.inputShort}>
                         <label htmlFor="first_name">First Name</label>
-                        <input id="first_name" name="firstName" type="text" onChange={onChangeTextInput} value={firstName}/>
+                        <input
+                            id="first_name"
+                            name="firstName"
+                            type="text"
+                            style={validMessage.firstName ? {border: "1px solid red"} : {}}
+                            onChange={onChangeTextInput}
+                            value={firstName}
+                        />
+                        <p>{validMessage.firstName || validMessage.lastName}</p>
                     </div>
                     <div className={style.inputShort}>
                         <label htmlFor="last_name">Last Name</label>
-                        <input id="last_name" name="lastName" type="text" onChange={onChangeTextInput} value={lastName}/>
+                        <input
+                            id="last_name"
+                            name="lastName"
+                            type="text"
+                            style={validMessage.lastName ? {border: "1px solid red"} : {}}
+                            onChange={onChangeTextInput}
+                            value={lastName}
+                        />
                     </div>
                 </div>
                 {/* Email */}
                 <div className={style.section}>
                     <div className={style.inputLong}>
                         <label htmlFor="email">Email</label>
-                        <input id="email" name="email" type="email" onChange={onChangeTextInput} value={email}/>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            style={validMessage.email ? {border: "1px solid red"} : {}}
+                            onChange={onChangeTextInput}
+                            value={email}
+                        />
+                        <p>{validMessage.email}</p>
                     </div>
                 </div>
                 {/* Address + Contact Number */}
@@ -215,11 +246,27 @@ const Profile = () => {
                 <div className={style.section}>
                     <div className={style.inputLong}>
                         <label htmlFor="password">Password</label>
-                        <input id="password" type="password" name="password" onChange={onChangeTextInput} value={password}/>
+                        <input
+                            id="password"
+                            type={!passwordVisibleState ? 'password' : 'text'}
+                            name="password"
+                            style={validMessage.password ? {border: "1px solid red"} : {}}
+                            onChange={onChangeTextInput}
+                            value={password}
+                        />
+                        <div
+                            className={`${style.passwordVisible} ${!passwordVisibleState ? style.visible : style.invisible}`}
+                            style={validMessage.password ? {border: "1px solid red", borderLeft: "1px solid transparent"} : {}}
+                            onClick={passwordVisible}
+                        />
+                        <p>{validMessage.password}</p>
                     </div>
+
                 </div>
                 {/* Submit Button */}
-                <button type="submit">Save</button>
+                <div className={style.section}>
+                    <button type="submit">Save</button>
+                </div>
             </form>
         </div>
     );
