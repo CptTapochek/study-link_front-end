@@ -8,12 +8,11 @@
     font-weight: 600;
     font-size: 24px;
     color: var(--black-color);
-    width: 100%; height: 10%;
+    width: 100%; height: 15%;
     align-items: center;
+    padding-left: 24px;
 }
-.profileTitle p {
-    margin-left: 2.5%;
-}
+
 .mainUserSettings {
     width: 100%; height: 90%;
     overflow: hidden;
@@ -33,6 +32,7 @@ label.avatar_upload {
     cursor: pointer;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 .defaultProfileIcon {
     position: absolute;
@@ -125,6 +125,9 @@ label.avatar_upload {
 }
 .invisible {
     background-image: url("../../assets/icons/eye.svg");
+}
+.inputLong {
+    position: relative;
 }
 
 .section div p {

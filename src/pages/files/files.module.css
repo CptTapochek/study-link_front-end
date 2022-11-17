@@ -1,4 +1,129 @@
 
 .main {
+    width: 100%; height: 100%;
     flex-direction: column;
+    justify-items: flex-start;
 }
+
+.title {
+    align-items: center;
+    padding-left: 24px;
+    height: 15%;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--black-color);
+}
+
+.infoBlock {
+    margin-top: 1%;
+    align-items: center;
+    width: 100%; height: 30px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.infoBlock p {
+    font-weight: 600;
+    color: #b4b4b4;
+    font-size: 14px;
+}
+.infoBlock .fileName {width: 35%}
+.infoBlock .course {width: 25%}
+.infoBlock .date {
+    width: 15%;
+    justify-content: center;
+}
+.infoBlock .action {
+    width: 25%;
+    justify-content: center;
+}
+
+.filesList {
+    width: 100%; height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.file {
+    user-select: none;
+    align-items: center;
+}
+
+.fileTitle {
+    padding-left: 24px;
+    width: 35%;
+    align-items: center;
+}
+.fileTitle p {
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.fileTitle i {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 22px;
+    background-position: center;
+    height: 22px; width: 22px;
+    margin-right: 8px;
+    background-image: url("../../assets/icons/folder.svg");
+}
+
+.courseTitle {
+    align-items: center;
+    padding-left: 10px;
+    width: 25%; height: 100%;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fileDate {
+    width: calc(15% - 10px); height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.fileActions {
+    align-items: center;
+    justify-content: space-around;
+    width: 25%; height: 100%;
+}
+.download, .delete {
+    align-items: center;
+    font-size: 15px;
+    height: 70%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.download:hover, .delete:hover {
+    background-color: #e5efff;
+}
+.download i {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+    height: 18px; width: 18px;
+    margin-right: 4px;
+    background-image: url("../../assets/icons/download.svg");
+}
+.delete i {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+    height: 22px; width: 18px;
+    margin-right: 4px;
+    background-image: url("../../assets/icons/delete.svg");
+}
+
+
+
