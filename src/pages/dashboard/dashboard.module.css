@@ -1,4 +1,188 @@
 
 .main {
+    width: 100%; height: 100%;
     flex-direction: column;
+    justify-items: flex-start;
+}
+
+.title {
+    align-items: center;
+    padding-left: 24px;
+    height: 13%;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--black-color);
+}
+
+.row {
+    height: 45%; width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card {
+    width: 15%; height: 80%;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.studentsCard {background-color: #E1DFFA}
+.teachersCard {background-color: #F7DEE5}
+.coursesCard {background-color: #D7E8F5}
+
+.hexagonBack {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-bottom: 6%;
+    border-radius: 5px;
+    width: 75px; height: 46px;
+    box-sizing: border-box;
+    transition: all 1s;
+    border: 0.5vh solid transparent;
+}
+.hexagonBack:after,
+.hexagonBack:before {
+    content: "";
+    border: inherit;
+    position: absolute;
+    top: -0.5vh; left: -0.5vh;
+    border-radius: inherit;
+    height: 100%; width: 100%;
+}
+.hexagonBack:before {transform: rotate(60deg)}
+.hexagonBack:after {transform: rotate(-60deg)}
+.studentsCard .hexagonBack {background-color: #4D32FA}
+.studentsCard .hexagonBack:after,
+.studentsCard .hexagonBack:before{background-color: #4D32FA}
+.teachersCard .hexagonBack {background-color: #E80C46}
+.teachersCard .hexagonBack:after,
+.teachersCard .hexagonBack:before{background-color: #E80C46}
+.coursesCard .hexagonBack {background-color: #1975DB}
+.coursesCard .hexagonBack:after,
+.coursesCard .hexagonBack:before{background-color: #1975DB}
+
+.card div i {
+    position: absolute;
+    z-index: 10;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 42px;
+    height: 42px; width: 42px;
+}
+.studentsCard div i {background-image: url("../../assets/icons/graduate-student.svg")}
+.teachersCard div i {background-image: url("../../assets/icons/teacher.svg")}
+.coursesCard div i {background-image: url("../../assets/icons/book.svg")}
+
+.cardTitle {
+    margin-top: 70%;
+    color: var(--black-color);
+    font-size: 18px;
+}
+.cardValue {
+    margin-top: 10px;
+    color: var(--black-color);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.largeCard {
+    width: 40%; height: 80%;
+    border-radius: 10px;
+    background-color: #EFEEFF;
+}
+
+.textSection {
+    width: 50%; height: 100%;
+    padding: 3%;
+    margin-top: 3%;
+    flex-direction: column;
+}
+.largeCardTitle {
+    color: var(--black-color);
+    font-size: 20px;
+    font-weight: 500;
+}
+.largeCardLegend {
+    margin-top: 15%;
+    margin-left: 5%;
+    flex-direction: column;
+}
+.largeCardLegend p {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 600;
+    align-items: center;
+    color: #1e51dc;
+}
+/*.largeCardLegend .process {color: #227ded}
+.largeCardLegend .inProcess {color: #fefcff}*/
+.largeCardLegend p:before {
+    content: " ";
+    margin-right: 10px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 1px solid #cdcbd0;
+}
+.largeCardLegend .process:before {background-color: #227ded}
+.largeCardLegend .inProcess:before {background-color: #fefcff}
+
+.circularChart {
+    width: 50%; height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.circleWrap {
+    margin: 150px auto;
+    width: 150px;
+    height: 150px;
+    background: #fefcff;
+    border-radius: 50%;
+    border: 1px solid #cdcbd0;
+}
+.circleWrap .circle .mask,
+.circleWrap .circle .fill {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+}
+.mask .fill {
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #227ded;
+}
+.circleWrap .circle .mask {
+    clip: rect(0px, 150px, 150px, 75px);
+}
+.mask.full,
+.circle .fill {
+    animation: fill ease-in-out 3s;
+    transform: rotate(135deg);
+}
+.circleWrap .insideCircle {
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    background: #EFEEFF;
+    line-height: 120px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
+    margin-left: 14px;
+    color: #1e51dc;
+    position: absolute;
+    z-index: 100;
+    font-weight: 700;
+    font-size: 2em;
+}
+@keyframes fill{
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(135deg);
+    }
 }
