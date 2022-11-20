@@ -29,11 +29,11 @@
 .infoBlock .fileName {width: 35%}
 .infoBlock .course {width: 25%}
 .infoBlock .date {
-    width: 15%;
+    width: 14%;
     justify-content: center;
 }
 .infoBlock .action {
-    width: 25%;
+    width: 26%;
     justify-content: center;
 }
 
@@ -102,6 +102,7 @@
     padding-right: 5%;
     border-radius: 4px;
     cursor: pointer;
+    color: var(--black-color);
 }
 .download:hover, .delete:hover {
     background-color: #e5efff;

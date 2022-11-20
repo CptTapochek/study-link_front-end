@@ -1,4 +1,127 @@
 
 .main {
+    width: 100%; height: 100%;
     flex-direction: column;
+    justify-items: flex-start;
+}
+
+.title {
+    align-items: center;
+    padding-left: 24px;
+    height: 15%;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--black-color);
+}
+
+.infoBlock {
+    margin-top: 1%;
+    align-items: center;
+    width: 100%; height: 30px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.infoBlock p {
+    font-weight: 600;
+    color: #b4b4b4;
+    font-size: 14px;
+}
+.infoBlock .testName {width: 35%}
+.infoBlock .course {width: 25%}
+.infoBlock .date {
+    width: 14%;
+    justify-content: center;
+}
+.infoBlock .score {
+    width: 12%;
+    justify-content: center;
+}
+.infoBlock .passFail {
+    width: 13%;
+    justify-content: center;
+}
+
+.gradesList {
+    width: 100%; height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.grade {
+    user-select: none;
+    align-items: center;
+    cursor: pointer;
+    color: var(--black-color);
+}
+.grade:hover {
+    background-color: #e5efff;
+}
+
+.gradeTitle {
+    padding-left: 24px;
+    width: 35%;
+    align-items: center;
+}
+.gradeTitle p {
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.gradeTitle i {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+    height: 22px; width: 22px;
+    margin-right: 8px;
+    background-image: url("../../assets/icons/grade-list.svg");
+}
+
+.courseTitle {
+    align-items: center;
+    padding-left: 10px;
+    width: 25%; height: 100%;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gradeSubmitted {
+    width: calc(15% - 10px); height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.gradeScore {
+    align-items: center;
+    justify-content: center;
+    width: 10.5%; height: 100%;
+}
+
+.gradeResult {
+    align-items: center;
+    justify-content: center;
+    width: 14%; height: 100%;
+}
+.gradeResult p {
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    width: 80px; height: 30px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+.gradeResult .pass {
+    background-color: #e6f6e9;
+    color: #57c56d;
+}
+.gradeResult .fail {
+    background-color: #ffe9e9;
+    color: #ff5555;
 }
