@@ -182,7 +182,7 @@ const SubjectItem = (props) => {
                         <i/><p>{props.subjectTitle}</p>
                     </div>
                     <div className={style.testResult}></div>
-                    <NavLink className={style.testOpen} to={props.quizLink}>
+                    <NavLink className={style.testOpen} to={`quiz/${props.quizLink}`}>
                         <i/><p>Open</p>
                     </NavLink>
                 </div>
