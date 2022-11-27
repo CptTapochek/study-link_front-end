@@ -23,6 +23,7 @@ const Files = () => {
 
     const fileElements = files.map(
         item => <FileItem
+            key={item.id.toString()}
             id={item.id}
             title={item.title}
             date={item.date}

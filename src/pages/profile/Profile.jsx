@@ -253,6 +253,7 @@ const Profile = () => {
                             style={validMessage.password ? {border: "1px solid red"} : {}}
                             onChange={onChangeTextInput}
                             value={password}
+                            autoComplete={"password"}
                         />
                         <div
                             className={`${style.passwordVisible} ${!passwordVisibleState ? style.visible : style.invisible}`}

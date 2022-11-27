@@ -12,6 +12,12 @@
     color: white;
     font-weight: 600;
     cursor: pointer;
+    margin-bottom: calc(100vw/1080 * 50);
+}
+@media only screen and (max-height: 700px) {
+    .logo {
+        margin-bottom: calc(100vw/1080 * 10);
+    }
 }
 .logo b{
     color: var(--red-color);
@@ -20,8 +26,7 @@
 .navigationButtons {
     flex-direction: column;
     width: 100%;
-    margin-top: 18%;
-    margin-bottom: 20%;
+    margin: 15% 0 15% 0;
     align-items: center;
 }
 .navigationButtons a {

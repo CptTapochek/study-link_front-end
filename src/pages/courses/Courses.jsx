@@ -30,6 +30,7 @@ const Courses = () => {
 
     const courseElements = courses.map(
         item => <CourseItem
+            key={item.id.toString()}
             id={item.id}
             title={item.title}
             link={item.link}

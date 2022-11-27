@@ -39,6 +39,7 @@ const Grades = () => {
 
     const gradeElements = grades.map(
         item => <GradeItem
+            key={item.id.toString()}
             id={item.id}
             title={item.title}
             date={item.date}

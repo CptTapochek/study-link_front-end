@@ -1,0 +1,201 @@
+.main {
+    width: 100%; height: 100%;
+    flex-direction: column;
+    justify-items: flex-start;
+}
+
+.title {
+    align-items: center;
+    padding-left: 24px;
+    height: 15%;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--black-color);
+}
+
+.infoBlock {
+    margin-top: 1%;
+    align-items: center;
+    width: 100%; height: 30px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.infoBlock p {
+    font-weight: 600;
+    color: #b4b4b4;
+    font-size: 14px;
+}
+.infoBlock .infoSubjectTitle {width: 50%}
+.infoBlock .infoFiles {width: 25%}
+.infoBlock .infoAction {
+    width: 25%;
+    justify-content: center;
+}
+
+.subjectsList {
+    width: 100%; height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.subject {
+    margin: 20px 0 10px 0;
+    color: var(--black-color);
+    border-top: 1px solid #f2f2ff;
+}
+/*.subject:hover {
+    background-color: #e5efff;
+}*/
+
+.subjectTitle {
+    align-items: start;
+    padding-left: 24px;
+    width: 50%;
+}
+.subjectTitle div {
+    align-items: center;
+    height: 40px;
+}
+.subjectTitle div p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.subjectTitle div i {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+    height: 22px; width: 22px;
+    margin-right: 8px;
+    background-image: url("../../assets/icons/grade-list.svg");
+}
+
+.testTitle {
+    align-items: center;
+    padding-left: 24px;
+    width: 50%;
+}
+.testTitle p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.testTitle i {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 22px;
+    background-position: center;
+    height: 22px; width: 22px;
+    margin-right: 8px;
+    background-image: url("../../assets/icons/star.svg");
+}
+
+.filesList {
+    flex-direction: column;
+    width: 25%;
+}
+.file {
+}
+.file p {
+    margin: 0;
+    height: 35px;
+    font-size: 16px;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.testResult {
+    margin-top: 8px;
+    align-items: center;
+    width: 25%; height: 100%;
+}
+.testResult p {
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    width: 80px; height: 30px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+.testResult .pass {
+    background-color: #e6f6e9;
+    color: #57c56d;
+}
+.testResult .fail {
+    background-color: #ffe9e9;
+    color: #ff5555;
+}
+
+.actionButtons {
+    width: 25%;
+    align-items: center;
+    flex-direction: column;
+}
+.download {
+    margin-top: 4px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    width: 40%; height: 30px;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--black-color);
+}
+.download:hover {background-color: #e5efff}
+.download i {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+    height: 18px; width: 18px;
+    margin-right: 4px;
+    background-image: url("../../assets/icons/download.svg");
+}
+
+.testScore, .testOpen{
+     width: 25%;
+     margin-top: 10px;
+     justify-content: center;
+     align-items: center;
+ }
+.testScore p {
+    margin: 0;
+}
+.testScore i {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+    height: 22px; width: 18px;
+    margin-right: 4px;
+    background-image: url("../../assets/icons/sheet-result.svg");
+}
+
+.testOpen p {
+    color: var(--black-color);
+    margin: 0;
+}
+.testOpen i {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+    height: 22px; width: 18px;
+    margin-right: 4px;
+    background-image: url("../../assets/icons/pencil-edit.svg");
+}
