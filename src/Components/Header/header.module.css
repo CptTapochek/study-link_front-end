@@ -8,7 +8,10 @@
 
 .navigation {
     width: 70%;
-    background-color: #1424b1;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--black-color);
+    margin-left: 28px;
 }
 
 .date {

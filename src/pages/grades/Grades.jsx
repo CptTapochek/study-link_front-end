@@ -1,9 +1,12 @@
 import style from "./grades.module.css";
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
+import {setGlobalState} from "../../state/header";
 
 
 const Grades = () => {
+    setGlobalState("headerTitle", "Grades");
+
     const [grades, setGrades] = useState([
         {
             id: 0,

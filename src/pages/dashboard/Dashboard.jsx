@@ -1,13 +1,12 @@
 import style from "./dashboard.module.css";
+import { setGlobalState } from "../../state/header";
 
 
 const Dashboard = () => {
+    setGlobalState("headerTitle", "Dashboard");
 
     return (
         <div className={style.main}>
-            <div className={style.title}>
-                <p>Dashboard</p>
-            </div>
             <div className={style.row}>
                 <div className={`${style.card} ${style.studentsCard}`}>
                     <div className={style.hexagonBack}><i/></div>

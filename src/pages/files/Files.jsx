@@ -1,9 +1,12 @@
 import style from "./files.module.css";
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
+import {setGlobalState} from "../../state/header";
 
 
 const Files = () => {
+    setGlobalState("headerTitle", "Files");
+
     const [files, setFiles] = useState([
         {
             id: 0,
