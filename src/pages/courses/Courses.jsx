@@ -1,12 +1,10 @@
 import style from "./courses.module.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {setGlobalState} from "../../state/header";
 
 
 const Courses = () => {
-    setGlobalState("headerTitle", "Courses");
-
     const [courses, setCourses] = useState([
         {
             id: 0,
@@ -41,6 +39,10 @@ const Courses = () => {
             processes={item.processes}
         />
     );
+
+    useEffect(() => {
+        setGlobalState("headerTitle", "Courses");
+    });
 
     return (
         <div className={style.main}>

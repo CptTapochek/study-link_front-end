@@ -5,7 +5,7 @@ import { useGlobalState} from "../../state/header";
 
 
 const Header = ({calendar, setCalendar}) => {
-    const headerTitle = useGlobalState("headerTitle");
+    const headerTitle = useGlobalState("headerTitle")[0];
     const openCalendar = () => {
         setCalendar(<Calendar setCalendar={setCalendar}/>);
     };

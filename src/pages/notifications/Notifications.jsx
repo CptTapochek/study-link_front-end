@@ -1,9 +1,12 @@
 import style from "./notifications.module.css";
 import {setGlobalState} from "../../state/header";
+import {useEffect} from "react";
 
 
 const Notifications = () => {
-    setGlobalState("headerTitle", "Notifications");
+    useEffect(() => {
+        setGlobalState("headerTitle", "Notifications");
+    });
 
     return (
         <div className={style.main}>

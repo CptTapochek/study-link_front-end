@@ -1,9 +1,12 @@
 import style from "./dashboard.module.css";
 import { setGlobalState } from "../../state/header";
+import {useEffect} from "react";
 
 
 const Dashboard = () => {
-    setGlobalState("headerTitle", "Dashboard");
+    useEffect(() => {
+        setGlobalState("headerTitle", "Dashboard");
+    });
 
     return (
         <div className={style.main}>

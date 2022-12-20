@@ -34,15 +34,6 @@ const Quiz = () => {
         ]
     });
 
-    const onChangeTextInput = (e) => {
-        const {name, value} = e.target;
-        switch (name) {
-            case "question_1":
-                console.log("************", name, "**********", value)
-                break;
-        }
-    }
-
     const sendDates = async (e) => {
         e.preventDefault();
         console.log("^^^^^^^^^", response);
@@ -84,29 +75,73 @@ class QuizItems extends React.Component {
         let Question;
         const quiz = this.props;
 
-        const onChangeInput = (e) => {
-            console.log("************", quiz.response);
+        const onChangeInputOneResponse = (e) => {
             const {name, value} = e.target;
             let response = quiz.response;
             if (response.length > 0){
+                let exist = false;
                 for (let idx = 0; idx < response.length; idx++) {
-                    if (response[idx]["name"] === name) {
-                        response[idx] = {
-                            name: name,
-                            response: value
-                        }
-                    } else {
-                        response.push({
-                            name: name,
-                            response: value
-                        });
+                    if (response[idx]["name"] == name) {
+                        exist = true;
+                        response[idx]["response"] = value;
                     }
                 }
+                if(exist == false) {
+                    response.push({ name: name, response: value, type: "one-response" });
+                }
             } else {
-                response.push({
-                    name: name,
-                    response: value
-                });
+                response.push({ name: name, response: value, type: "one-response" });
+            }
+            quiz.setResponse(response)
+        }
+
+        const onChangeInputTextResponse = (e) => {
+            const {name, value} = e.target;
+            let response = quiz.response;
+            if (response.length > 0){
+                let exist = false;
+                for (let idx = 0; idx < response.length; idx++) {
+                    if (response[idx]["name"] == name) {
+                        exist = true;
+                        response[idx]["response"] = value;
+                    }
+                }
+                if(exist == false) {
+                    response.push({ name: name, response: value, type: "text" });
+                }
+            } else {
+                response.push({ name: name, response: value, type: "text" });
+            }
+            quiz.setResponse(response)
+        }
+
+        const onChangeInputMultiResponse = (e) => {
+            const {name, value} = e.target;
+            let response = quiz.response;
+            if (response.length > 0) {
+                let exist = false;
+                for (let idx = 0; idx < response.length; idx++) {
+                    if (response[idx]["name"] == name) {
+                        exist = true;
+                        let existElement = false;
+                        let currentValues = response[idx]["response"];
+                        currentValues.forEach(element => {
+                            if(element == value){ existElement = true; }
+                        })
+                        if(existElement) {
+                            const index = currentValues.indexOf(value);
+                            if (index > -1) { currentValues.splice(index, 1); }
+                        } else {
+                            currentValues.push(value);
+                        }
+                        response[idx]["response"] = currentValues;
+                    }
+                }
+                if(exist == false) {
+                    response.push({ name: name, response: [value], type: "multi-response" });
+                }
+            } else {
+                response.push({ name: name, response: [value], type: "multi-response" });
             }
             quiz.setResponse(response)
         }
@@ -121,7 +156,7 @@ class QuizItems extends React.Component {
                                 quiz.responses.map(
                                 item => (
                                     <div className={style.multiResponse} key={Math.random()}>
-                                        <input type="checkbox" name={quiz.name} value={item} onChange={onChangeInput}/>
+                                        <input type="checkbox" name={quiz.name} value={item} onChange={onChangeInputMultiResponse}/>
                                         <p>{item}</p>
                                     </div>
                                 ))
@@ -139,7 +174,7 @@ class QuizItems extends React.Component {
                                 quiz.responses.map(
                                 item => (
                                     <div className={style.oneResponse} key={Math.random()}>
-                                        <input type="radio" name={quiz.name} value={item} onChange={onChangeInput}/>
+                                        <input type="radio" name={quiz.name} value={item} onChange={onChangeInputOneResponse}/>
                                         <p>{item}</p>
                                     </div>
                                 ))
@@ -153,7 +188,7 @@ class QuizItems extends React.Component {
                     <div className={style.quiz}>
                         <div className={style.quizTitle}>{quiz.title}</div>
                         <div className={style.textResponse}>
-                            <textarea placeholder="My Response" name={quiz.name} onChange={onChangeInput}></textarea>
+                            <textarea placeholder="My Response" name={quiz.name} onChange={onChangeInputTextResponse}></textarea>
                         </div>
                     </div>
                 );

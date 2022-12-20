@@ -20,7 +20,9 @@ const Profile = () => {
     const [validMessage, setValidMessage] = useState({});
     const [passwordVisibleState, setPasswordVisibleState] = useState(false);
 
-    setGlobalState("headerTitle", "Profile");
+    useEffect(() => {
+        setGlobalState("headerTitle", "Profile");
+    });
 
     let ChangeImage = (e) => {
         setSelectedImage(e.target.files[0]);
