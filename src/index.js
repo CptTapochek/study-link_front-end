@@ -6,17 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 import {ApolloClient, ApolloProvider, gql, InMemoryCache} from "@apollo/client";
 
 const client = new ApolloClient({
-    uri: "http://localhost:8080/qraphql",
+    uri: "http://localhost:8080/api",
     cache: new InMemoryCache()
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <ApolloProvider client={client}>
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
+        <App client={client}/>
     </ApolloProvider>
 );
 
-reportWebVitals();

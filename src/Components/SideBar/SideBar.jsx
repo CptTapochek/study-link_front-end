@@ -1,8 +1,15 @@
 import style from './side-bar.module.css';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 
 
-const SideBar = () => {
+const SideBar = ({setIsAuth}) => {
+    const navigator = useNavigate();
+
+    const logout = () => {
+        localStorage.clear();
+        setIsAuth(false);
+        navigator("/login");
+    }
 
     return (
         <div className={style.main}>
@@ -53,7 +60,7 @@ const SideBar = () => {
                     </div>
                 </NavLink>
             </div>
-            <a className={style.logout}>
+            <a className={style.logout} onClick={logout}>
                 <i/>
                 <div className={style.logoutTitle}>Logout</div>
             </a>

@@ -8,10 +8,10 @@ export const GET_ALL_USERS = gql(`
     }
 `);
 
-export const GET_ONE_USER = gql(`
-    query getUser($id: ID) {
-        getUser(id: $id) {
-            id, username
+export const LOGIN = gql(`
+    query login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            _id, email, type, name, surname, error,
         }
     }
 `);
