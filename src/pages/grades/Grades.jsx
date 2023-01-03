@@ -58,9 +58,6 @@ const Grades = () => {
 
     return (
         <div className={style.main}>
-            <div className={style.title}>
-                <p>Grades</p>
-            </div>
             <div className={style.infoBlock}>
                 <p className={style.testName}>Test</p>
                 <p className={style.course}>Course</p>

@@ -39,9 +39,6 @@ const Files = () => {
 
     return (
         <div className={style.main}>
-            <div className={style.title}>
-                <p>Saved Files</p>
-            </div>
             <div className={style.infoBlock}>
                 <p className={style.fileName}>File Name</p>
                 <p className={style.course}>Course</p>
@@ -54,21 +51,23 @@ const Files = () => {
 };
 
 const FileItem = (props) => {
-    return <div className={style.file}>
-        <div className={style.fileTitle}>
-            <i/><p>{props.title}</p>
-        </div>
-        <div className={style.courseTitle}>{props.courseTitle}</div>
-        <div className={style.fileDate}>{props.date}</div>
-        <div className={style.fileActions}>
-            <NavLink className={style.download} to={`download/file/${props.downloadLink}`}>
-                <i/><p>Download</p>
-            </NavLink>
-            <div className={style.delete}>
-                <i/><p>Delete</p>
+    return (
+        <div className={style.file}>
+            <div className={style.fileTitle}>
+                <i/><p>{props.title}</p>
+            </div>
+            <div className={style.courseTitle}>{props.courseTitle}</div>
+            <div className={style.fileDate}>{props.date}</div>
+            <div className={style.fileActions}>
+                <NavLink className={style.download} to={`download/file/${props.downloadLink}`}>
+                    <i/><p>Download</p>
+                </NavLink>
+                <div className={style.delete}>
+                    <i/><p>Delete</p>
+                </div>
             </div>
         </div>
-    </div>
+    );
 }
 
 export default Files;

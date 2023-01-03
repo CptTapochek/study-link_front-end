@@ -94,66 +94,10 @@ const Profile = () => {
             message.password = "The length of the first name must be greater than 8";
         }
         setValidMessage(message);
-
-        // if (Object.keys(message).length === 0){
-        //     try {
-        //         const res = await requestGraphql(
-        //             "POST",
-        //             `mutation ($data: UserDates){
-        //                 signUp(inputs: $data)
-        //              }`,
-        //             {
-        //                 "data": {
-        //                     "firstName": name.firstName,
-        //                     "lastName": name.lastName,
-        //                     "userName": name.userName,
-        //                     "password": pass,
-        //                     "birthDate": {
-        //                         "day": selectedDay ? selectedDay.day : null,
-        //                         "month": selectedDay ? selectedDay.month : null,
-        //                         "year": selectedDay ? selectedDay.year : null
-        //                     },
-        //                     "contacts": [
-        //                         {
-        //                             "type": "EMAIL",
-        //                             "value": email
-        //                         },
-        //                         {
-        //                             "type": "PHONE",
-        //                             "value": phone
-        //                         }
-        //                     ],
-        //                     "address": location,
-        //                     "avatar": avatar
-        //                 }
-        //             }
-        //         );
-        //
-        //         const { data: { signUp: user } } = await res.json();
-        //         console.log(user);
-        //
-        //         if (user === "success"){
-        //             if (window.innerWidth > 650){
-        //                 setPopUp(<SuccessPopUp/>);
-        //             } else {
-        //                 setSmallPopUp(<SmallScreenSuccess/>);
-        //             }
-        //         } else {
-        //             navigate("/sign-up");
-        //             alert("An error has been detected, please re-enter the data");
-        //         }
-        //
-        //     } catch(error) {
-        //         console.error("gql error", error);
-        //     }
-        // }
     };
 
     return (
         <div className={style.main}>
-            <div className={style.profileTitle}>
-                <p>Edit Profile</p>
-            </div>
             <form className={style.mainUserSettings} onSubmit={sendDates}>
                 {/* User avatar */}
                 <div className={style.avatarInput}>

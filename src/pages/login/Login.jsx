@@ -8,7 +8,6 @@ const Login = ({client, setIsAuth}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [validationMessage, setValidationMessage] = useState("");
-    const [user, setUser] = useState("");
     const navigate = useNavigate();
 
 
@@ -48,12 +47,17 @@ const Login = ({client, setIsAuth}) => {
             if(data.login["error"] != null) {
                 setValidationMessage(data.login["error"]);
             } else {
-                setUser(data.login);
-                await localStorage.setItem("user", user);
+                let loginUser = {
+                    _id: data.login["_id"],
+                    email: data.login["email"],
+                    name: data.login["name"],
+                    surname: data.login["surname"],
+                    type: data.login["type"]
+                }
+                await localStorage.setItem("user", JSON.stringify(loginUser));
                 navigate("/dashboard");
                 setIsAuth(true);
             }
-            console.log(user);
         }
     }
 

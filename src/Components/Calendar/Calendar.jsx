@@ -10,7 +10,7 @@ const Calendar = ({setCalendar}) => {
         <div className={style.main}>
             <div className={style.darkBG} onClick={dismissCalendar}/>
             <div className={style.box}>
-
+                Calendar
             </div>
         </div>
     );

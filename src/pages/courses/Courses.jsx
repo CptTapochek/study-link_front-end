@@ -46,9 +46,9 @@ const Courses = () => {
 
     return (
         <div className={style.main}>
-            <div className={style.title}>
-                <div className={style.faculty}>Faculty: ETTI</div>
-                <div className={style.semester}>I<sup>st</sup>semester</div>
+            <div className={style.infoBlock}>
+                <p className={style.courseName}>Course Name</p>
+                <p className={style.progress}>Progress</p>
             </div>
             <div className={style.coursesList}>{courseElements}</div>
         </div>

@@ -7,7 +7,7 @@ const Auth = ({setIsAuth, client}) => {
     return (
         <Routes>
             <Route path={"/*"} element={<Login client={client} setIsAuth={setIsAuth}/>}/>
-            <Route path={"/sign-up"} element={<SignUp client={client} setIsAuth={setIsAuth}/>}/>
+            <Route path={"/sign-up"} element={<SignUp setIsAuth={setIsAuth}/>}/>
         </Routes>
     );
 };

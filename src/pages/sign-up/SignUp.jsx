@@ -1,18 +1,17 @@
 import style from "./sign-up.module.css";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import {useMutation} from "@apollo/client";
 import {SIGN_UP} from "../../mutations/user";
 
 
-const SignUp = ({client, setIsAuth}) => {
+const SignUp = ({setIsAuth}) => {
     const [email, setEmail] = useState("");
     const [type, setType] = useState("STUDENT");
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
     const [password, setPassword] = useState("");
     const [validationMessage, setValidationMessage] = useState("");
-    const [user, setUser] = useState("");
     const [newUser] = useMutation(SIGN_UP);
     const navigate = useNavigate();
 
@@ -51,12 +50,17 @@ const SignUp = ({client, setIsAuth}) => {
                 if(data.SignUp["error"] != null) {
                     setValidationMessage(data.SignUp["error"]);
                 } else {
-                    setUser(data.SignUp);
-                    localStorage.setItem("user", user);
+                    let loginUser = {
+                        _id: data.login["_id"],
+                        email: data.login["email"],
+                        name: data.login["name"],
+                        surname: data.login["surname"],
+                        type: data.login["type"]
+                    }
+                    localStorage.setItem("user", JSON.stringify(loginUser));
                     navigate("/dashboard");
                     setIsAuth(true);
                 }
-                console.log(data.SignUp);
             });
         }
     }
