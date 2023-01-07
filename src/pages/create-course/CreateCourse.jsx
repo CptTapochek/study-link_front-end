@@ -1,6 +1,6 @@
 import style from "./create-course.module.css";
 import React, {useEffect, useState} from "react";
-import {NavLink, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useMutation} from "@apollo/client";
 import {CREATE_COURSE} from "../../mutations/course";
 
@@ -59,8 +59,11 @@ const CreateCourse = () => {
                     }
                 }
             }).then (({data}) => {
-                console.log(data);
-                navigate("/courses");
+                if (data.createCourse.code === "200" && data.createCourse.error === null){
+                    navigate("/courses");
+                } else {
+                    alert(data.createCourse.error);
+                }
             });
         }
     }

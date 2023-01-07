@@ -1,48 +1,40 @@
 import style from "./courses.module.css";
 import React, {useEffect, useState} from "react";
-import {NavLink} from "react-router-dom";
 import {setGlobalState} from "../../state/header";
+import {COURSE_LIST} from "../../query/course";
+import {useQuery} from "@apollo/client";
+import {setCourseIdState} from "../../state/course";
+import {NavLink, useNavigate} from "react-router-dom";
 
 
 const Courses = () => {
-    const [courses, setCourses] = useState([
-        {
-            id: 0,
-            title: "Random course title 1",
-            link: "random-course-1",
-            progress: 3,
-            processes: 8,
-        },
-        {
-            id: 1,
-            title: "Random course title 2",
-            link: "random-course-2",
-            progress: 7,
-            processes: 9,
-        },
-        {
-            id: 2,
-            title: "Random course title 3",
-            link: "random-course-3",
-            progress: 2,
-            processes: 12,
+    const user = JSON.parse(localStorage.getItem("user"));
+    const [courses, setCourses] = useState([]);
+    const {data, loading, error} = useQuery(COURSE_LIST, {
+        variables: {
+            userId: user["_id"]
         }
-    ]);
+    });
+    const isTeacher = user["type"] === "TEACHER";
 
-    const courseElements = courses.map(
-        item => <CourseItem
-            key={item.id.toString()}
-            id={item.id}
-            title={item.title}
-            link={item.link}
-            progress={item.progress}
-            processes={item.processes}
-        />
-    );
 
     useEffect(() => {
         setGlobalState("headerTitle", "Courses");
-    });
+        if(!loading) {
+            setCourses(data["getCoursesList"]);
+        }
+    }, [data]);
+
+    const courseElements = courses.map(
+        item => <CourseItem
+            key={item._id.toString()}
+            id={item._id}
+            title={item.title}
+            progress={item.progress}
+            processes={item.processes}
+            isTeacher={isTeacher}
+        />
+    );
 
     return (
         <div className={style.main}>
@@ -56,15 +48,22 @@ const Courses = () => {
 };
 
 const CourseItem = (props) => {
+    const navigate = useNavigate();
     const percent = props.progress / props.processes * 100;
+    
+    const openCoursePage = () => {
+      setCourseIdState("courseId", props.id);
+    }
 
-    return <NavLink className={style.course} to={`course/${props.link}`}>
-        <div className={style.courseTitle}><p>{props.title}</p></div>
-        <div className={style.loading}>
-            <div className={style.loadingBar} style={{width: `${percent}%`}}/>
-        </div>
-        <div className={style.count}>{props.progress}/{props.processes}</div>
-    </NavLink>
+    return (
+        <NavLink to="/courses/course" className={style.course} onClick={openCoursePage}>
+            <div className={style.courseTitle}><p>{props.title}</p></div>
+            <div className={style.loading}>
+                <div className={style.loadingBar} style={{width: `${props.isTeacher ? 100 : percent}%`}}/>
+            </div>
+            <div className={style.count}>{props.isTeacher ? props.processes : props.progress + "/" + props.processes}</div>
+        </NavLink>
+    );
 }
 
 
