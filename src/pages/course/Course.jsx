@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import style from "../course/course.module.css";
 import {NavLink} from 'react-router-dom';
+import {useQuery} from "@apollo/client";
+import {GET_COURSE} from "../../query/course";
+import {setGlobalState} from "../../state/header";
 
 
-const Course = ({setCourseLink}) => {
+const Course = () => {
     const [course, setCourse] = useState({
         id: 0,
         title: "Random course title 1",
@@ -95,6 +98,19 @@ const Course = ({setCourseLink}) => {
             },
         ]
     });
+
+    const courseID = JSON.parse(localStorage.getItem("courseId"));
+    const {data, loading, error} = useQuery(GET_COURSE, {
+        variables: {
+            id: courseID
+        }
+    });
+
+    useEffect(() => {
+        if(!loading) {
+            setCourse(data["getCourse"]);
+        }
+    }, [data]);
 
     const subjectElements = course["subjects"].map(
         item => <SubjectItem

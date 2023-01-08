@@ -9,3 +9,19 @@ export const COURSE_LIST = gql(`
         }
     }
 `);
+
+export const GET_COURSE = gql(`
+    query getCourse($id: String!) {
+        getCourse(id: $id) {
+            _id, title, processes, progress, teacher {
+                _id, name, surname, email
+            }, subjects {
+                _id, title, type, files {
+                    _id, title, type, size
+                }, quiz_details {
+                    title, max_score, score, state
+                }
+            }
+        }
+    }
+`);

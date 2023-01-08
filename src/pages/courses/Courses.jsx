@@ -4,7 +4,7 @@ import {setGlobalState} from "../../state/header";
 import {COURSE_LIST} from "../../query/course";
 import {useQuery} from "@apollo/client";
 import {setCourseIdState} from "../../state/course";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 
 const Courses = () => {
@@ -48,7 +48,6 @@ const Courses = () => {
 };
 
 const CourseItem = (props) => {
-    const navigate = useNavigate();
     const percent = props.progress / props.processes * 100;
     
     const openCoursePage = () => {
