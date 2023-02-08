@@ -1,8 +1,26 @@
 import style from "./quiz.module.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {useQuery} from "@apollo/client";
+import {GET_QUIZ} from "../../query/quiz";
 
 
 const Quiz = () => {
+    const [tempQuiz, setTempQuiz] = useState([]);
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    const quizID = window.location.pathname.split("/")[4].toString();
+    const {data, loading, error} = useQuery(GET_QUIZ, {
+        variables: {
+            userId: user["_id"],
+            quizId: quizID.toString()
+        }
+    });
+    useEffect(() => {
+        if(!loading) {
+            setTempQuiz(data["generateQuiz"]);
+        }
+    }, [data]);
+
     const [response, setResponse] = useState([]);
     const [quiz, setQuiz] = useState({
         id: "35345",

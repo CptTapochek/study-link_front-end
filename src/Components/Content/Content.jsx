@@ -22,7 +22,7 @@ const Content = () => {
                     <Route path={"/*"} element={<Dashboard/>}/>
                     <Route path={"/files"} element={<Files/>}/>
                     <Route path={"/courses"} element={<Courses/>}/>
-                    <Route path={"courses/course"} element={<Course/>}/>
+                    <Route path={"courses/course/*"} element={<Course/>}/>
                     <Route path={"courses/create-course"} element={<CreateCourse/>}/>
                     <Route path={"courses/course/quiz/*"} element={<Quiz/>}/>
                     <Route path={"/grades"} element={<Grades/>}/>

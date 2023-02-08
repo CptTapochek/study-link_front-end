@@ -49,13 +49,10 @@ const Courses = () => {
 
 const CourseItem = (props) => {
     const percent = props.progress / props.processes * 100;
-    
-    const openCoursePage = () => {
-      setCourseIdState("courseId", props.id);
-    }
+
 
     return (
-        <NavLink to="/courses/course" className={style.course} onClick={openCoursePage}>
+        <NavLink to={`/courses/course/${props.id}`} className={style.course}>
             <div className={style.courseTitle}><p>{props.title}</p></div>
             <div className={style.loading}>
                 <div className={style.loadingBar} style={{width: `${props.isTeacher ? 100 : percent}%`}}/>
