@@ -12,6 +12,26 @@ const Header = ({calendar, setCalendar}) => {
         setCalendar(<Calendar setCalendar={setCalendar}/>);
     };
     const navigate = useNavigate();
+    const date = new Date(Date.now());
+
+    const getMonthTitle = (month) => {
+        let monthTitle;
+        switch (month) {
+          case 0: monthTitle = "Jan"; break;
+          case 1: monthTitle = "Feb"; break;
+          case 2: monthTitle = "Mar"; break;
+          case 3: monthTitle = "Apr"; break;
+          case 4: monthTitle = "May"; break;
+          case 5: monthTitle = "Jun"; break;
+          case 6: monthTitle = "Jul"; break;
+          case 7: monthTitle = "Aug"; break;
+          case 8: monthTitle = "Sep"; break;
+          case 9: monthTitle = "Oct"; break;
+          case 10: monthTitle = "Nov"; break;
+          case 11: monthTitle = "Dec"; break;
+        }
+        return monthTitle;
+    }
 
     return (
         <div className={style.header}>
@@ -27,7 +47,7 @@ const Header = ({calendar, setCalendar}) => {
             <div className={style.date} onClick={openCalendar}>
                 <div className={style.calendarIcon}/>
                 <div className={style.calendarTitle}>
-                    30 Oct, 2022
+                    {`${date.getDate()} ${getMonthTitle(date.getMonth())}, ${date.getFullYear()}`}
                 </div>
             </div>
         </div>
