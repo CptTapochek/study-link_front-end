@@ -38,7 +38,7 @@ const Quiz = () => {
                 }
             }
         }).then (({data}) => {
-            if (data.submitQuiz.code === "200" && data.submitQuiz.error === null){
+            if (data.submitQuiz.code.toString() == "200"){
                 navigate("/courses");
             } else {
                 alert(data.submitQuiz.error);
@@ -49,7 +49,7 @@ const Quiz = () => {
     const quizElements = tempQuiz["questions"] !== undefined ? tempQuiz["questions"].map(
         item => <QuizItems
             key={item._id}
-            questionId={item._id}
+            questionId={item["questionId"]}
             type={item.type}
             title={item.title}
             responses={item.responses}
@@ -161,7 +161,7 @@ class QuizItems extends React.Component {
                                 question.responses.map(
                                 item => (
                                     <div className={style.multiResponse} key={Math.random()}>
-                                        <input type="checkbox" name={question["questionId"]} onChange={onChangeInputMultiResponse} value={item._id}/>
+                                        <input type="checkbox" name={question.questionId} onChange={onChangeInputMultiResponse} value={item["responseId"]}/>
                                         <p>{item["title"]}</p>
                                     </div>
                                 ))
@@ -179,7 +179,7 @@ class QuizItems extends React.Component {
                                 question.responses.map(
                                 item => (
                                     <div className={style.oneResponse} key={Math.random()}>
-                                        <input type="radio" name={question["questionId"]} value={item._id} onChange={onChangeInputOneResponse}/>
+                                        <input type="radio" name={question.questionId} value={item["responseId"]} onChange={onChangeInputOneResponse}/>
                                         <p>{item["title"]}</p>
                                     </div>
                                 ))
@@ -193,7 +193,7 @@ class QuizItems extends React.Component {
                     <div className={style.quiz}>
                         <div className={style.quizTitle}>{question.title}</div>
                         <div className={style.textResponse}>
-                            <textarea placeholder="My Response" name={question["questionId"]} onChange={onChangeInputTextResponse}></textarea>
+                            <textarea placeholder="My Response" name={question.questionId} onChange={onChangeInputTextResponse}></textarea>
                         </div>
                     </div>
                 );

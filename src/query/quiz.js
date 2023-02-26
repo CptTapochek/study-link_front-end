@@ -4,8 +4,8 @@ export const GET_QUIZ = gql(`
     query generateQuiz($userId: String!, $quizId: String!) {
         generateQuiz(userId: $userId, quizId: $quizId) {
             _id, title, max_score, score, completed, questions {
-                _id, title, type, responses {
-                    _id, title
+                _id, questionId, title, type, responses {
+                    _id, responseId, title
                 },
             }
         }
