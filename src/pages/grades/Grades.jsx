@@ -43,7 +43,9 @@ const Grades = () => {
                 <p className={style.score}>Score</p>
                 <p className={style.passFail}>Pass/Fail</p>
             </div>
-            <div className={style.gradesList}>{gradeElements}</div>
+            <div className={style.gradesList}>{
+                loading ? <div className="loader"/> : gradeElements
+            }</div>
         </div>
     );
 };

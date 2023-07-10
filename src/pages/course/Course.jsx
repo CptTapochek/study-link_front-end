@@ -45,7 +45,7 @@ const Course = () => {
                 <p className={style.infoAction}>Action</p>
             </div>
             <div className={style.subjectsList}>
-                {subjectElements}
+                {loading ? <div className="loader"/> : subjectElements}
             </div>
         </div>
     );

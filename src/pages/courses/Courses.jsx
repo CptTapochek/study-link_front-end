@@ -3,7 +3,6 @@ import React, {useEffect, useState} from "react";
 import {setGlobalState} from "../../state/header";
 import {COURSE_LIST} from "../../query/course";
 import {useQuery} from "@apollo/client";
-import {setCourseIdState} from "../../state/course";
 import {NavLink} from "react-router-dom";
 
 
@@ -42,7 +41,9 @@ const Courses = () => {
                 <p className={style.courseName}>Course Name</p>
                 <p className={style.progress}>Progress</p>
             </div>
-            <div className={style.coursesList}>{courseElements}</div>
+            <div className={style.coursesList}>{
+                loading ? <div className="loader"/> : courseElements
+            }</div>
         </div>
     );
 };
@@ -50,12 +51,11 @@ const Courses = () => {
 const CourseItem = (props) => {
     const percent = props.progress / props.processes * 100;
 
-
     return (
         <NavLink to={`/courses/course/${props.id}`} className={style.course}>
             <div className={style.courseTitle}><p>{props.title}</p></div>
             <div className={style.loading}>
-                <div className={style.loadingBar} style={{width: `${props.isTeacher ? 100 : percent}%`}}/>
+                <div className={style.loadingBar} style={{width: `${percent}%`}}/>
             </div>
             <div className={style.count}>{props.isTeacher ? props.processes : props.progress + "/" + props.processes}</div>
         </NavLink>

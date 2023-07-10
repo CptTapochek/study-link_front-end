@@ -65,10 +65,12 @@ const Quiz = () => {
                 <p>Quiz example title</p>
             </div>
             <form className={style.mainQuizList} onSubmit={sendDates}>
-                {quizElements}
-                <div className={style.submitButton}>
-                    <button type="submit">Send</button>
-                </div>
+                {loading ? <div className="loader" style={{marginLeft: "0"}}/> : quizElements}
+                {loading ? <div/> :
+                    <div className={style.submitButton}>
+                        <button type="submit">Send</button>
+                    </div>
+                }
             </form>
         </div>
     );
