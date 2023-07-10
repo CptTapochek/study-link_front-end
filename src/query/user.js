@@ -15,3 +15,11 @@ export const LOGIN = gql(`
         }
     }
 `);
+
+export const DASHBOARD_DATA = gql(`
+    query dashboardData($userId: String!) {
+        dashboardData(userId: $userId) {
+            students, teachers, courses, progress
+        }
+    }
+`);
