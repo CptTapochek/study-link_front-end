@@ -2,57 +2,35 @@ import style from "./grades.module.css";
 import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {setGlobalState} from "../../state/header";
+import {useQuery} from "@apollo/client";
+import {GRADES_LIST} from "../../query/grade";
 
 
 const Grades = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const {data, loading, error} = useQuery(GRADES_LIST, {
+        variables: {
+            userId: user["_id"]
+        }
+    });
     useEffect(() => {
         setGlobalState("headerTitle", "Grades");
-    });
-
-    const [grades, setGrades] = useState([
-        {
-            id: 0,
-            title: "Fake test",
-            date: "13/11/2022",
-            courseTitle: "Random course title",
-            link: "fake-test-1",
-            score: 80,
-            maxScore: 100,
-            passed: true
-        },
-        {
-            id: 1,
-            title: "Fake test 2",
-            date: "05/11/2022",
-            courseTitle: "Random course title 2",
-            link: "fake-test-2",
-            score: 32,
-            maxScore: 100,
-            passed: false
-        },
-        {
-            id: 2,
-            title: "Fake test 3",
-            date: "25/10/2022",
-            courseTitle: "Random course title 3",
-            link: "fake-test-3",
-            score: 12,
-            maxScore: 100,
-            passed: false
+        if(!loading) {
+            setGrades(data["getGrades"]);
         }
-    ]);
+    }, [data]);
+
+    const [grades, setGrades] = useState([]);
 
     const gradeElements = grades.map(
         item => <GradeItem
-            key={item.id.toString()}
-            id={item.id}
-            title={item.title}
+            key={Math.random().toString()}
+            title={item.courseTitle}
             date={item.date}
-            courseTitle={item.courseTitle}
-            link={item.link}
+            quizTitle={item.quizTitle}
             score={item.score}
             maxScore={item.maxScore}
-            passed={item.passed}
+            approve={item.approve}
         />
     );
 
@@ -71,13 +49,13 @@ const Grades = () => {
 };
 
 const GradeItem = (props) => {
-    return <NavLink className={style.grade} to={`test/${props.link}`}>
+    return <NavLink className={style.grade} to={`/courses`}>
         <div className={style.gradeTitle}><i/><p>{props.title}</p></div>
-        <div className={style.courseTitle}>{props.courseTitle}</div>
-        <div className={style.gradeSubmitted}>{props.date}</div>
+        <div className={style.courseTitle}>{props.quizTitle}</div>
+        <div className={style.gradeSubmitted}>{`${props.date.day.toString().padStart(2, "0")}/${props.date.month.toString().padStart(2, "0")}/${props.date.year}`}</div>
         <div className={style.gradeScore}>{props.score}/{props.maxScore}</div>
         <div className={style.gradeResult}>
-            <p className={props.passed ? style.pass : style.fail}>{props.passed ? "Pass" : "Fail"}</p>
+            <p className={props.approve ? style.pass : style.fail}>{props.approve ? "Pass" : "Fail"}</p>
         </div>
     </NavLink>
 }

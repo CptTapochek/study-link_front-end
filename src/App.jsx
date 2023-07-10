@@ -22,7 +22,9 @@ function App({client}) {
                 {
                     isAuth ?
                         <div className={style.main}>
-                            <nav className={style.navigation}><SideBar setIsAuth={setIsAuth}/></nav>
+                            <nav className={style.navigation}>
+                                <SideBar setIsAuth={setIsAuth}/>
+                            </nav>
                             <main className={style.mainAppBlock}>
                                 <header className={style.header}>
                                     <Header calendar={calendar} setCalendar={setCalendar} />

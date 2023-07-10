@@ -12,7 +12,7 @@
     color: white;
     font-weight: 600;
     cursor: pointer;
-    margin-bottom: calc(100vw/1080 * 50);
+    margin-bottom: calc(100vh/1080 * 50);
 }
 @media only screen and (max-height: 700px) {
     .logo {

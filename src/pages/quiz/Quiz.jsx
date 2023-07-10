@@ -46,16 +46,17 @@ const Quiz = () => {
         });
     };
 
-    const quizElements = tempQuiz["questions"] !== undefined ? tempQuiz["questions"].map(
-        item => <QuizItems
-            key={item._id}
-            questionId={item["questionId"]}
-            type={item.type}
-            title={item.title}
-            responses={item.responses}
-            setQuestions={setQuestions}
-            questions={questions}
-        />
+    const quizElements = tempQuiz["questions"] !== undefined ?
+        tempQuiz["questions"].map(
+            item => <QuizItems
+                key={item._id}
+                questionId={item["questionId"]}
+                type={item.type}
+                title={item.title}
+                responses={item.responses}
+                setQuestions={setQuestions}
+                questions={questions}
+            />
     ) : <div/>;
 
     return (
